@@ -1,35 +1,35 @@
-const path = require(`path`);
+const path = require(`path`)
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
 
   /**
    * Create Blog Posts
    */
   const postResults = await graphql(`
     query GET_POSTS {
-        wpgraphql {
-            posts(first: 1000, after: null) {
-                edges {
-                    node {
-                        databaseId
-                        slug
-                        title
-                        date
-                        content(format: RENDERED)
-                        featuredImage {
-                            altText
-                            link
-                            mediaItemUrl
-                            uri
-                        }
-                    }
-                }
+      wpgraphql {
+        posts(first: 1000, after: null) {
+          edges {
+            node {
+              databaseId
+              slug
+              title
+              date
+              content(format: RENDERED)
+              featuredImage {
+                altText
+                link
+                mediaItemUrl
+                uri
+              }
             }
+          }
         }
+      }
     }
-  `);
-  
+  `)
+
   postResults.data.wpgraphql.posts.edges.forEach(({ node }) => {
     createPage({
       path: node.slug,
@@ -41,7 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
         databaseId: node.databaseId,
       },
     })
-  });
+  })
 
   /**
    * Create Pages
@@ -68,8 +68,8 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `);
-  
+  `)
+
   pageResults.data.wpgraphql.pages.edges.forEach(({ node }) => {
     createPage({
       path: node.slug,
@@ -81,8 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
         databaseId: node.databaseId,
       },
     })
-  });
-
+  })
 
   /**
    * Create Category Pages
@@ -101,8 +100,8 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `);
-  
+  `)
+
   categoryPageResults.data.wpgraphql.categories.edges.forEach(({ node }) => {
     createPage({
       path: `/category/${node.slug}`,
@@ -112,10 +111,10 @@ exports.createPages = async ({ graphql, actions }) => {
         // passed to blog-post.js
         slug: node.slug,
         databaseId: node.databaseId,
-        name: node.name
+        name: node.name,
       },
     })
-  });
+  })
 
   /**
    * Create Tags Pages
@@ -134,8 +133,8 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `);
-  
+  `)
+
   tagPageResults.data.wpgraphql.tags.edges.forEach(({ node }) => {
     createPage({
       path: `/tag/${node.slug}`,
@@ -145,9 +144,8 @@ exports.createPages = async ({ graphql, actions }) => {
         // passed to blog-post.js
         slug: node.slug,
         databaseId: node.databaseId,
-        name: node.name
+        name: node.name,
       },
     })
-  });
-
+  })
 }
