@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `WP GraphQL Gatsby Starter`,
-    description: `Keeping it clever...`,
-    author: `@n8finch`,
+    title: `El Salvador Conectado`,
+    description: `Sitio web hecho en Gatsby con GraphQL. Para el contenido se usa WordPress https://elsalvadorconectado.org`,
+    author: `@elsalvadorconectado`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
