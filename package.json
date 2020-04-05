@@ -21,6 +21,7 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "husky": "^4.2.3",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -35,6 +36,11 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && git add ."
+    }
   },
   "repository": {
     "type": "git",
