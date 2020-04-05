@@ -698,3 +698,8 @@ nav ul.sub-nav li {
 .dark a:visited {
   color: #fff;
 }
+
+.test-bg::before {
+  box-shadow: inset 0 0 0 2480px rgba(23, 72, 237, 0.85);
+
+}

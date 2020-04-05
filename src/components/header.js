@@ -5,7 +5,8 @@ import Menu from "./menu"
 
 import ThemeContext from "../context/ThemeContext"
 import ElSalvadorConectadoLogo from "../images/elsalvadorconectado-logo.svg"
-import ImagenManosEnMedio from "../images/perry-grone-lbLgFFlADrY-unsplash.jpg"
+
+const blueTransparentColor = "rgba(23, 72, 237, 0.85)"
 
 const Header = () => (
   <StaticQuery
@@ -24,45 +25,41 @@ const Header = () => (
     `}
     render={data => {
       // Set ImageData
-      const imageData = data.desktop.childImageSharp.fluid
+      const imageFluid = data.desktop.childImageSharp.fluid
       return (
         <BackgroundImage
           Tag="section"
-          fluid={imageData}
-          backgroundColor={`#1748ED`}
+          className="test-bg"
+          fluid={imageFluid}
+          backgroundColor={blueTransparentColor}
         >
           <ThemeContext.Consumer>
             {theme => (
-              <div>
+              <div
+                style={{
+                  marginBottom: `1.45rem`,
+                  minHeight: `840px`,
+                }}
+              >
                 <div
                   style={{
-                    marginBottom: `1.45rem`,
-                    minHeight: `840px`,
+                    margin: `0 auto`,
+                    maxWidth: 960,
+                    padding: `1.45rem 1.0875rem`,
                   }}
                 >
-                  <div
-                    style={{
-                      margin: `0 auto`,
-                      maxWidth: 960,
-                      padding: `1.45rem 1.0875rem`,
-                    }}
-                  >
-                    <Link to="/">
-                      <img
-                        src={ElSalvadorConectadoLogo}
-                        alt="El texto se lee El Salvador Conectado con un logotipo formando una especie de abrazo"
-                      />
-                    </Link>
+                  <Link to="/">
+                    <img
+                      src={ElSalvadorConectadoLogo}
+                      alt="El texto se lee El Salvador Conectado con un logotipo formando una especie de abrazo"
+                    />
+                  </Link>
 
-                    <Menu />
+                  <Menu />
 
-                    <button
-                      className="dark-switcher"
-                      onClick={theme.toggleDark}
-                    >
-                      {theme.dark ? <span>☀</span> : <span>☾</span>}
-                    </button>
-                  </div>
+                  <button className="dark-switcher" onClick={theme.toggleDark}>
+                    {theme.dark ? <span>☀</span> : <span>☾</span>}
+                  </button>
                 </div>
                 <span>
                   Photo by{" "}
