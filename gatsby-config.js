@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `WP GraphQL Gatsby Starter`,
-    description: `Keeping it clever...`,
-    author: `@n8finch`,
+    title: `El Salvador Conectado`,
+    description: `Sitio web hecho en Gatsby con GraphQL. Para el contenido se usa WordPress https://elsalvadorconectado.org`,
+    author: `@elsalvadorconectado`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -35,9 +35,10 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/elsalvadorconectado-icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-offline`,
+    `gatsby-plugin-styled-components`,
   ],
 }
