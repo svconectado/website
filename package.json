@@ -22,7 +22,8 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "styled-components": "^5.0.1",
-    "tailwindcss": "^1.2.0"
+    "tailwindcss": "^1.2.0",
+    "twin.macro": "^1.0.0-alpha.8"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
@@ -34,8 +35,7 @@
     "eslint-plugin-react": "^7.19.0",
     "gatsby-plugin-eslint": "^2.0.8",
     "husky": "^4.2.3",
-    "prettier": "^1.19.1",
-    "twin.macro": "^1.0.0-alpha.8"
+    "prettier": "^1.19.1"
   },
   "keywords": [
     "gatsby"

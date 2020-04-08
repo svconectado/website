@@ -1,0 +1,13 @@
+@media (min-width: 1024px) {
+  .container {
+    padding-right: 5rem;
+    padding-left: 5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
+}
