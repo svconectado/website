@@ -1,90 +1,13 @@
 import { Link, graphql, StaticQuery } from "gatsby"
 import React from "react"
-import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
-// import Menu from "./menu"
+import tw from "twin.macro"
+import { theme as themeTw } from "../../tailwind.config"
 
 import ThemeContext from "../context/ThemeContext"
 import ElSalvadorConectadoLogo from "../images/elsalvadorconectado-logo.svg"
 
 const blueTransparentColor = "rgba(23, 72, 237, 0.85)"
-
-const StyledWrapper = styled.div`
-  .logo {
-    width: 172.72px;
-    margin: auto;
-    display: block;
-  }
-
-  .headline {
-    color: #fff;
-    padding-top: 80px;
-    font-weight: 700;
-    font-size: 36px;
-    text-align: center;
-
-    span {
-      font-weight: 400;
-    }
-  }
-
-  .header_cta__wrapper {
-    text-align: center;
-  }
-
-  .header_cta {
-    color: #fff;
-    font-family: "Montserrat";
-    font-weight: 500;
-    font-size: 24px;
-    padding: 13px 6px;
-    position: relative;
-
-    ::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: #8ca2ec;
-      opacity: 0.85;
-      width: 31px;
-      height: 100%;
-      transition: width 1s ease-out;
-    }
-
-    &:hover {
-      ::before {
-        width: 100%;
-      }
-    }
-  }
-
-  @media (min-width: 376px) {
-    .headline span {
-      display: block;
-    }
-  }
-
-  @media (min-width: 769px) {
-    .logo {
-      display: initial;
-      margin: 0;
-    }
-
-    .headline {
-      font-size: 62px;
-      text-align: left;
-    }
-
-    .header_cta__wrapper {
-      text-align: left;
-    }
-
-    .header_cta {
-      font-size: 32px;
-    }
-  }
-`
 
 const Header = () => (
   <StaticQuery
@@ -105,74 +28,47 @@ const Header = () => (
       // Set ImageData
       const imageFluid = data.desktop.childImageSharp.fluid
       return (
-        <StyledWrapper>
-          <BackgroundImage
-            Tag="section"
-            className="test-bg"
-            fluid={imageFluid}
-            backgroundColor={blueTransparentColor}
-          >
+        <StyledWrapper className="header" imageFluid={imageFluid} bgColor={blueTransparentColor}>
+          <div className="header__hero">
             <ThemeContext.Consumer>
               {(theme) => (
-                <div
-                  style={{
-                    minHeight: "840px"
-                  }}
-                >
+                <div className="header__hero__container container">
                   <button type="button" className="dark-switcher" onClick={theme.toggleDark}>
                     {theme.dark ? <span>☀</span> : <span>☾</span>}
                   </button>
-                  <div
-                    style={{
-                      margin: "0 auto",
-                      maxWidth: 960,
-                      padding: "0 1.0875rem"
-                    }}
-                  >
-                    <div style={{ paddingTop: "140px" }}>{/* spacing */}</div>
-                    <Link className="logo" to="/">
+                  <div className="header__hero__container__text">
+                    <Link className="header__hero__container__text__logo" to="/">
                       <img
                         src={ElSalvadorConectadoLogo}
                         alt="El texto se lee El Salvador Conectado con un logotipo formando una especie de abrazo"
-                        style={{
-                          height: "75px",
-                          width: "254px"
-                        }}
                       />
                     </Link>
 
                     {/* <Menu /> */}
 
-                    <h1 className="headline">
-                      <span>{"El Salvador es más "}</span>
+                    <h1 className="header__hero__container__text__message">
+                      <span className="header__hero__container__text__message__light">
+                        {"El Salvador es más "}
+                      </span>
                       si está conectado
                     </h1>
 
-                    <div style={{ height: "48px" }}>{/* spacing */}</div>
-
-                    <div className="header_cta__wrapper">
-                      <Link
-                        className="header_cta"
+                    <div className="header__hero__container__text__button">
+                      <a
+                        className="header__hero__container__text__button__href"
                         href="http://unete.elsalvadorconectado.org"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Únete ahora →
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </div>
               )}
             </ThemeContext.Consumer>
-          </BackgroundImage>
-          <div
-            className="test-this"
-            style={{
-              margin: "0 auto",
-              maxWidth: 960,
-              padding: "0 1.0875rem"
-            }}
-          >
+          </div>
+          <div>
             <span>
               Photo by
               {" "}
@@ -200,5 +96,117 @@ const Header = () => (
     }}
   />
 )
+
+const StyledWrapper = styled.div`
+  .header__hero {
+    background-image: url(${(props) => props.imageFluid.src});
+    ${tw`bg-local bg-center bg-no-repeat bg-cover`}
+    ${tw`relative`}
+
+    &::after {
+      ${tw`absolute inset-0 w-full h-full`}
+      content: " ";
+      z-index: 0;
+      background-color: ${(props) => props.bgColor};
+    }
+
+    &__container {
+      ${tw`font-montserrat text-white`}
+      ${tw`relative`}
+      ${tw`mx-auto`}
+      z-index: 1;
+
+      &__text {
+        ${tw`h-screen flex flex-col justify-around items-center`}
+        ${tw`text-4xl`}
+
+        &__logo {
+          ${tw`w-2/4`}
+          ${tw`flex justify-center`}
+
+          img {
+            ${tw`mb-0`}
+          }
+        }
+
+        &__message {
+          ${tw`text-center font-bold`}
+          ${tw`flex flex-col justify-center items-center`}
+
+          &__light {
+            ${tw`font-normal`}
+          }
+        }
+
+        &__button {
+          ${tw`text-2xl font-bold underline`}
+
+          &__href {
+            ${tw`flex justify-center items-center`}
+            ${tw`relative`}
+
+            &::after {
+              content: '';
+              ${tw`absolute inset-0 h-full w-1/12`}
+              background-color: #8ca2ec;
+              opacity: 0.50;
+              transition: width 1s ease-out;
+            }
+
+            &:hover {
+              &::after {
+                ${tw`w-full`}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+@media (min-width: ${themeTw.extend.screens.tablet}) {
+  .hero__container__text__button__href {
+    ${tw`text-3xl`}
+  }
+
+  .header__hero__container__text__message {
+    ${tw`text-5xl`}
+  }
+}
+
+@media (min-width: ${themeTw.extend.screens.laptop}) {
+  .header__hero {
+    &__container__text {
+      ${tw`items-start justify-start`}
+      ${tw`py-24`}
+
+      &__logo {
+        ${tw`justify-start`}
+        ${tw`w-1/4`}
+      }
+
+      &__message {
+        ${tw`pt-20`}
+      }
+
+      &__button {
+        ${tw`pt-8`}
+      }
+    }
+  }
+}
+
+@media (min-width: ${themeTw.extend.screens.desktop}) {
+  .header__hero__container__text__message {
+    ${tw`pt-24`}
+    ${tw`text-6xl`}
+  }
+
+  .header__hero__container__text__button {
+    ${tw`pt-12`}
+    ${tw`text-4xl`}
+  }
+}
+`
 
 export default Header
