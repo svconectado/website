@@ -129,7 +129,7 @@ const Header = () => (
                       padding: `0 1.0875rem`,
                     }}
                   >
-                    <div style={{ paddingTop: "140px" }}>{/* spacing */}</div>
+                    <div style={{ height: "140px" }}>{/* spacing */}</div>
                     <Link className="logo" to="/">
                       <img
                         src={ElSalvadorConectadoLogo}

@@ -10,48 +10,52 @@ const IndexPage = ({ data }) => (
     <SEO title="Home" description="" />
     <h1>My Blog</h1>
     <h2>Posts</h2>
-    {data.wpgraphql.posts.edges.map(({ node }) => (
-      <div key={node.slug}>
-        <Link to={`/${node.slug}`}>
-          <div dangerouslySetInnerHTML={{ __html: node.title }} />
-        </Link>
-        <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-      </div>
-    ))}
+    {data.wpgraphql.posts.edges &&
+      data.wpgraphql.posts.edges.map(({ node }) => (
+        <div key={node.slug}>
+          <Link to={`/${node.slug}`}>
+            <div dangerouslySetInnerHTML={{ __html: node.title }} />
+          </Link>
+          <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+        </div>
+      ))}
     <br />
     <hr />
     <br />
     <h2>Pages</h2>
-    {data.wpgraphql.pages.edges.map(({ node }) => (
-      <div key={node.slug}>
-        <Link to={`/${node.slug}`}>
-          <div dangerouslySetInnerHTML={{ __html: node.title }} />
-        </Link>
-        <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-      </div>
-    ))}
+    {data.wpgraphql.pages.edges &&
+      data.wpgraphql.pages.edges.map(({ node }) => (
+        <div key={node.slug}>
+          <Link to={`/${node.slug}`}>
+            <div dangerouslySetInnerHTML={{ __html: node.title }} />
+          </Link>
+          <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+        </div>
+      ))}
     <br />
     <hr />
     <br />
     <h2>Categories</h2>
-    {data.wpgraphql.categories.edges.map(({ node }) => (
-      <div key={node.slug}>
-        <Link to={`/category/${node.slug}`}>
-          <div dangerouslySetInnerHTML={{ __html: node.name }} />
-        </Link>
-      </div>
-    ))}
+    {data.wpgraphql.categories.edges &&
+      data.wpgraphql.categories.edges.map(({ node }) => (
+        <div key={node.slug}>
+          <Link to={`/category/${node.slug}`}>
+            <div dangerouslySetInnerHTML={{ __html: node.name }} />
+          </Link>
+        </div>
+      ))}
     <br />
     <hr />
     <br />
     <h2>Tags</h2>
-    {data.wpgraphql.tags.edges.map(({ node }) => (
-      <div key={node.slug}>
-        <Link to={`/tag/${node.slug}`}>
-          <div dangerouslySetInnerHTML={{ __html: node.name }} />
-        </Link>
-      </div>
-    ))}
+    {data.wpgraphql.tags.edges &&
+      data.wpgraphql.tags.edges.map(({ node }) => (
+        <div key={node.slug}>
+          <Link to={`/tag/${node.slug}`}>
+            <div dangerouslySetInnerHTML={{ __html: node.name }} />
+          </Link>
+        </div>
+      ))}
   </Layout>
 )
 
