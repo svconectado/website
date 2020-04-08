@@ -101,7 +101,7 @@ const Header = () => (
         }
       }
     `}
-    render={data => {
+    render={(data) => {
       // Set ImageData
       const imageFluid = data.desktop.childImageSharp.fluid
       return (
@@ -113,20 +113,20 @@ const Header = () => (
             backgroundColor={blueTransparentColor}
           >
             <ThemeContext.Consumer>
-              {theme => (
+              {(theme) => (
                 <div
                   style={{
-                    minHeight: `840px`,
+                    minHeight: "840px"
                   }}
                 >
-                  <button className="dark-switcher" onClick={theme.toggleDark}>
+                  <button type="button" className="dark-switcher" onClick={theme.toggleDark}>
                     {theme.dark ? <span>☀</span> : <span>☾</span>}
                   </button>
                   <div
                     style={{
-                      margin: `0 auto`,
+                      margin: "0 auto",
                       maxWidth: 960,
-                      padding: `0 1.0875rem`,
+                      padding: "0 1.0875rem"
                     }}
                   >
                     <div style={{ paddingTop: "140px" }}>{/* spacing */}</div>
@@ -136,7 +136,7 @@ const Header = () => (
                         alt="El texto se lee El Salvador Conectado con un logotipo formando una especie de abrazo"
                         style={{
                           height: "75px",
-                          width: "254px",
+                          width: "254px"
                         }}
                       />
                     </Link>
@@ -144,7 +144,7 @@ const Header = () => (
                     {/* <Menu /> */}
 
                     <h1 className="headline">
-                      <span>{`El Salvador es más `}</span>
+                      <span>{"El Salvador es más "}</span>
                       si está conectado
                     </h1>
 
@@ -168,21 +168,24 @@ const Header = () => (
           <div
             className="test-this"
             style={{
-              margin: `0 auto`,
+              margin: "0 auto",
               maxWidth: 960,
-              padding: `0 1.0875rem`,
+              padding: "0 1.0875rem"
             }}
           >
             <span>
-              Photo by{" "}
+              Photo by
+              {" "}
               <a
                 href="https://unsplash.com/@perrygrone?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Perry Grone
-              </a>{" "}
-              on{" "}
+              </a>
+              {" "}
+              on
+              {" "}
               <a
                 href="https://unsplash.com/s/photos/together?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
                 target="_blank"
@@ -195,7 +198,7 @@ const Header = () => (
         </StyledWrapper>
       )
     }}
-  ></StaticQuery>
+  />
 )
 
 export default Header

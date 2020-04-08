@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "globals": {
+    "window": true,
+    "localStorage": true
+  },
+  "rules": {
+    "strict": 0,
+    "no-trailing-spaces": "error",
+    "semi": ["error", "never"],
+    "comma-dangle": ["error", "never"],
+    "quotes": ["error", "double", { "avoidEscape": true }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/no-danger": 0,
+    "react/prop-types": 0,
+    "react/state-in-constructor": 0
+  }
+}

@@ -6,21 +6,24 @@ import "./layout.css"
 
 const Layout = ({ children }) => (
   <ThemeContext.Consumer>
-    {theme => (
+    {(theme) => (
       <div className={theme.dark ? "dark" : "light"}>
         <Header />
         <div
           style={{
-            margin: `0 auto`,
+            margin: "0 auto",
             maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
+            padding: "0px 1.0875rem 1.45rem",
+            paddingTop: 0
           }}
         >
           {children}
           <footer>
-            © {new Date().getFullYear()}, Starter built with
-            {` `}
+            ©
+            {" "}
+            {new Date().getFullYear()}
+            , Starter built with
+            {" "}
             <a
               href="https://www.gatsbyjs.org"
               target="_blank"
@@ -28,7 +31,9 @@ const Layout = ({ children }) => (
             >
               Gatsby
             </a>
-            {` `}by{` `}
+            {" "}
+            by
+            {" "}
             <a
               href="https://n8finch.com"
               target="_blank"
@@ -44,7 +49,7 @@ const Layout = ({ children }) => (
 )
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default Layout
