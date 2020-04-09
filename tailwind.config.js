@@ -1,6 +1,16 @@
 module.exports = {
   theme: {
     extend: {
+      colors: {
+        gray: "#E9E9E9",
+        graytext: "#555555"
+      },
+      backgroundColor: (theme) => ({
+        gray: theme("colors.gray")
+      }),
+      textColor: (theme) => ({
+        gray: theme("colors.graytext")
+      }),
       fontFamily: {
         montserrat: "Montserrat, sans-serif",
         poppins: "Poppins, sans-serif"
@@ -11,10 +21,6 @@ module.exports = {
         tablet: "768px",
         laptop: "1024px",
         desktop: "1280px"
-      },
-      colors: {
-        gray: "#E9E9E9",
-        graytext: "#555555"
       }
     }
   },
