@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import ThemeContext from "../context/ThemeContext"
 import Header from "./header"
+import Footer from "./footer"
 import "./layout.css"
 
 const Layout = ({ children }) => (
@@ -43,6 +44,7 @@ const Layout = ({ children }) => (
             </a>
           </footer>
         </div>
+        <Footer />
       </div>
     )}
   </ThemeContext.Consumer>

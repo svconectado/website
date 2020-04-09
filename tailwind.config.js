@@ -11,6 +11,10 @@ module.exports = {
         tablet: "768px",
         laptop: "1024px",
         desktop: "1280px"
+      },
+      colors: {
+        gray: "#E9E9E9",
+        graytext: "#555555"
       }
     }
   },
