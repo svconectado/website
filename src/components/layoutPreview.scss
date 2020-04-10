@@ -1,0 +1,144 @@
+.html-format {
+  @apply font-montserrat;
+  line-height: 2;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.5;
+    @apply font-montserrat font-medium;
+    @apply mt-5 mb-4;
+  }
+
+  h1,
+  h2 {
+    @apply border-b border-separator;
+  }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+
+  h5 {
+    @apply text-baseSize;
+  }
+
+  table {
+    @apply table-auto border-collapse;
+    @apply mb-4;
+    @apply w-full block overflow-auto;
+
+    th, td {
+      @apply border-2 border-separator;
+      @apply px-4 py-2;
+    }
+  }
+
+  hr {
+    @apply my-6;
+    @apply border-2 border-separator;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  ul, ol {
+    @apply pl-8;
+    @apply mb-4;
+  }
+
+  ol ol,
+  ol ul,
+  ul ol,
+  ul ul {
+    @apply my-0;
+  }
+
+  ul {
+    @apply list-outside list-disc;
+  }
+
+  ul li ul li {
+    list-style: circle;
+  }
+
+  ul li ul li ul li {
+    list-style: square;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  code,
+  pre,
+  tt {
+    font-family: Consolas,SFMono-Regular,Liberation Mono,Menlo,monospace;
+    @apply rounded;
+    @apply bg-gray;
+  }
+
+  code {
+    @apply p-1;
+  }
+
+  pre {
+    @apply mb-4 p-4;
+  }
+
+  pre code {
+    @apply p-0;
+    @apply rounded-none;
+    @apply bg-transparent;
+  }
+
+  a {
+    color: #0366d6;
+  }
+
+  a:hover {
+    @apply underline;
+  }
+
+  strong {
+    @apply font-bold;
+  }
+
+  details {
+    @apply mb-4;
+  }
+
+  blockquote {
+    @apply pl-4 mb-4;
+    @apply border-l-4 border-separator;
+    @apply italic;
+  }
+
+  [class*="center"] {
+    @apply text-center;
+  }
+
+  [class*="left"] {
+    @apply text-left;
+  }
+
+  [class*="right"] {
+    @apply text-right;
+  }
+}

@@ -1,0 +1,19 @@
+.container {
+  @apply mx-auto;
+}
+
+.body {
+  @apply flex flex-col justify-between min-h-screen;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    @apply px-20;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    @apply px-16;
+  }
+}
