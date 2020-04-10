@@ -2,7 +2,7 @@ import { Link, graphql, StaticQuery } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
-import { theme as themeTw } from "../../tailwind.config"
+import { theme as CustomTheme } from "../../tailwind.config"
 
 import ThemeContext from "../context/ThemeContext"
 import ElSalvadorConectadoLogo from "../images/elsalvadorconectado-logo.svg"
@@ -113,7 +113,6 @@ const StyledWrapper = styled.div`
     &__container {
       ${tw`font-montserrat text-white`}
       ${tw`relative`}
-      ${tw`mx-auto`}
       z-index: 1;
 
       &__text {
@@ -164,7 +163,7 @@ const StyledWrapper = styled.div`
     }
   }
 
-@media (min-width: ${themeTw.extend.screens.tablet}) {
+@media (min-width: ${CustomTheme.extend.screens.tablet}) {
   .hero__container__text__button__href {
     ${tw`text-3xl`}
   }
@@ -174,7 +173,7 @@ const StyledWrapper = styled.div`
   }
 }
 
-@media (min-width: ${themeTw.extend.screens.laptop}) {
+@media (min-width: ${CustomTheme.extend.screens.laptop}) {
   .header__hero {
     &__container__text {
       ${tw`items-start justify-start`}
@@ -196,7 +195,7 @@ const StyledWrapper = styled.div`
   }
 }
 
-@media (min-width: ${themeTw.extend.screens.desktop}) {
+@media (min-width: ${CustomTheme.extend.screens.desktop}) {
   .header__hero__container__text__message {
     ${tw`pt-24`}
     ${tw`text-6xl`}

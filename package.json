@@ -6,6 +6,7 @@
   "author": "Son muchos <frontend@elsalvadorconectado.org>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
+    "font-awesome": "^4.7.0",
     "gatsby": "^2.19.7",
     "gatsby-background-image": "^1.0.1",
     "gatsby-image": "^2.2.39",
