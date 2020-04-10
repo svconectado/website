@@ -51,6 +51,15 @@ module.exports = {
           failOnError: false
         }
       }
+    },
+    {
+      resolve: "gatsby-plugin-sass",
+      options: {
+        postCssPlugins: [
+          require("tailwindcss"),
+          require("./tailwind.config.js")
+        ],
+      }
     }
   ]
 }
