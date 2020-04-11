@@ -141,4 +141,10 @@
   [class*="right"] {
     @apply text-right;
   }
+
+  img[class*="center"],
+  img[class*="left"],
+  img[class*="right"] {
+    display: initial;
+  }
 }

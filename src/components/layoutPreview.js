@@ -7,7 +7,7 @@ import "./layoutPreview.scss"
 const Layout = ({ children }) => (
   <ThemeContext.Consumer>
     {(theme) => (
-      <div className={theme.dark ? "dark" : "light"}>
+      <div className={`body ${theme.dark ? "dark" : "light"}`}>
         <div className="html-format">
           {children}
         </div>
