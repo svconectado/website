@@ -4,16 +4,16 @@ import styled from "styled-components"
 import tw from "twin.macro"
 import { theme as CustomTheme } from "../../tailwind.config"
 
-import LayoutPreview from "../components/layoutPreview"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const SecondPage = ({ data }) => (
-  <LayoutPreview>
+const BlogPageTemplate = ({ data }) => (
+  <Layout>
     <SEO
       title={data.wpgraphql.post.title}
       description={data.wpgraphql.post.excerpt}
     />
-    <LayoutWrapper className="container">
+    <LayoutWrapper className="container html-format">
       <div className="publication">
         {data.wpgraphql.post.featuredImage && (
           <div
@@ -33,13 +33,11 @@ const SecondPage = ({ data }) => (
         <Link to="/">Go back to the homepage</Link>
       </div>
     </LayoutWrapper>
-  </LayoutPreview>
+  </Layout>
 )
 
 const LayoutWrapper = styled.div`
   .publication {
-    ${tw`px-4 py-8`}
-
     &__cover {
       ${tw`rounded-t`}
       ${tw`bg-local bg-center bg-no-repeat bg-cover`}
@@ -54,26 +52,18 @@ const LayoutWrapper = styled.div`
   }
 
 @media (min-width: ${CustomTheme.extend.screens.tablet}) {
-  .publication {
-    ${tw`px-8`}
-
-    &__cover {
-      ${tw`h-64`}
-    }
+  .publication__cover {
+    ${tw`h-64`}
   }
 }
 
 @media (min-width: ${CustomTheme.extend.screens.laptop}) {
-  .publication {
-    ${tw`px-0`}
-
-    &__title {
-      ${tw`text-4xl`}
-    }
+  .publication__title {
+    ${tw`text-4xl`}
   }
 }
 `
-export default SecondPage
+export default BlogPageTemplate
 
 export const query = graphql`
   query($databaseId: ID!) {

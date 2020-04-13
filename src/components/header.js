@@ -68,29 +68,6 @@ const Header = () => (
               )}
             </ThemeContext.Consumer>
           </div>
-          <div>
-            <span>
-              Photo by
-              {" "}
-              <a
-                href="https://unsplash.com/@perrygrone?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Perry Grone
-              </a>
-              {" "}
-              on
-              {" "}
-              <a
-                href="https://unsplash.com/s/photos/together?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Unsplash
-              </a>
-            </span>
-          </div>
         </StyledWrapper>
       )
     }}
@@ -113,6 +90,7 @@ const StyledWrapper = styled.div`
     &__container {
       ${tw`font-montserrat text-white`}
       ${tw`relative`}
+      ${tw`py-0`}
       z-index: 1;
 
       &__text {
