@@ -44,7 +44,7 @@ const BlogPageTemplate = ({ data }) => {
                 { date }
               </span>
             </div>
-            {Object.keys(post.tags).length > 0 && (
+            {post.tags.edges && (
               <div className="publication__details__tags">
                 {post.tags.edges.map((tag) => (
                   <Link

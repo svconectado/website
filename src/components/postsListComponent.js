@@ -15,14 +15,15 @@ const PostsListComponent = ({ data, typeList }) => (
     <StyledPostsList className="container">
       <div className="list">
         <h1 dangerouslySetInnerHTML={{ __html: data.wpgraphql[typeList].name }} className="list__title" />
-        {Object.keys(data.wpgraphql[typeList].posts.edges).length === 0 && (
+        {!data.wpgraphql[typeList].posts.edges && (
         <p className="list__title-not-found">
           No hay publicaciones disponibles
         </p>
         )}
-        {data.wpgraphql[typeList].posts.edges.map(({ node }) => (
-          <CardPostListComponent post={node} key={node.id} />
-        ))}
+        {data.wpgraphql[typeList].posts.edges
+         && data.wpgraphql[typeList].posts.edges.map(({ node }) => (
+           <CardPostListComponent post={node} key={node.id} />
+         ))}
       </div>
     </StyledPostsList>
   </Layout>

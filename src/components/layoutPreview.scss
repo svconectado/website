@@ -124,6 +124,10 @@
     @apply mb-4;
   }
 
+  summary {
+    display: list-item;
+  }
+
   blockquote {
     @apply pl-4 mb-4;
     @apply border-l-4 border-separator;

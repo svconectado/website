@@ -50,7 +50,7 @@ const PostCardList = ({ post }) => {
                 { date }
               </span>
             </Link>
-            {Object.keys(post.tags).length > 0 && (
+            {post.tags.edges && (
               <div className="card__details__tags">
                 {post.tags.edges.map((tag) => (
                   <Link
