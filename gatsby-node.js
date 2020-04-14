@@ -105,13 +105,14 @@ exports.createPages = async ({ graphql, actions }) => {
   categoryPageResults.data.wpgraphql.categories.edges.forEach(({ node }) => {
     createPage({
       path: `/category/${node.slug}`,
-      component: path.resolve("./src/templates/category-page-template.js"),
+      component: path.resolve("./src/templates/category-posts-list-template.js"),
       context: {
         // This is the $slug variable
         // passed to blog-post.js
         slug: node.slug,
         databaseId: node.databaseId,
-        name: node.name
+        name: node.name,
+        typeList: "category"
       }
     })
   })
@@ -138,13 +139,14 @@ exports.createPages = async ({ graphql, actions }) => {
   tagPageResults.data.wpgraphql.tags.edges.forEach(({ node }) => {
     createPage({
       path: `/tag/${node.slug}`,
-      component: path.resolve("./src/templates/tag-page-template.js"),
+      component: path.resolve("./src/templates/tag-posts-list-template.js"),
       context: {
         // This is the $slug variable
         // passed to blog-post.js
         slug: node.slug,
         databaseId: node.databaseId,
-        name: node.name
+        name: node.name,
+        typeList: "tag"
       }
     })
   })
