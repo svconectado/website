@@ -1,11 +1,11 @@
-import { Link, graphql, StaticQuery } from "gatsby"
+import { graphql, StaticQuery } from "gatsby"
 import React from "react"
 import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
 // import Menu from "./menu"
 
 import ThemeContext from "../context/ThemeContext"
-import ElSalvadorConectadoLogo from "../images/elsalvadorconectado-logo.svg"
+import HeaderContent from "./headerContent"
 
 const blueTransparentColor = "rgba(23, 72, 237, 0.85)"
 
@@ -113,56 +113,23 @@ const Header = () => (
             backgroundColor={blueTransparentColor}
           >
             <ThemeContext.Consumer>
-              {theme => (
-                <div
-                  style={{
-                    minHeight: `840px`,
-                  }}
-                >
-                  <button className="dark-switcher" onClick={theme.toggleDark}>
-                    {theme.dark ? <span>☀</span> : <span>☾</span>}
-                  </button>
+              {theme => {
+                return (
                   <div
                     style={{
-                      margin: `0 auto`,
-                      maxWidth: 960,
-                      padding: `0 1.0875rem`,
+                      minHeight: `840px`,
                     }}
                   >
-                    <div style={{ height: "140px" }}>{/* spacing */}</div>
-                    <Link className="logo" to="/">
-                      <img
-                        src={ElSalvadorConectadoLogo}
-                        alt="El texto se lee El Salvador Conectado con un logotipo formando una especie de abrazo"
-                        style={{
-                          height: "75px",
-                          width: "254px",
-                        }}
-                      />
-                    </Link>
-
-                    {/* <Menu /> */}
-
-                    <h1 className="headline">
-                      <span>{`El Salvador es más `}</span>
-                      si está conectado
-                    </h1>
-
-                    <div style={{ height: "48px" }}>{/* spacing */}</div>
-
-                    <div className="header_cta__wrapper">
-                      <Link
-                        className="header_cta"
-                        href="http://unete.elsalvadorconectado.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Únete ahora →
-                      </Link>
-                    </div>
+                    <button
+                      className="dark-switcher"
+                      onClick={theme.toggleDark}
+                    >
+                      {theme.dark ? <span>☀</span> : <span>☾</span>}
+                    </button>
+                    <HeaderContent />
                   </div>
-                </div>
-              )}
+                )
+              }}
             </ThemeContext.Consumer>
           </BackgroundImage>
           <div

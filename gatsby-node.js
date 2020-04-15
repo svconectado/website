@@ -30,18 +30,19 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  postResults.data.wpgraphql.posts.edges.forEach(({ node }) => {
-    createPage({
-      path: node.slug,
-      component: path.resolve(`./src/templates/blog-template.js`),
-      context: {
-        // This is the $slug variable
-        // passed to blog-post.js
-        slug: node.slug,
-        databaseId: node.databaseId,
-      },
+  Array.isArray(postResults.data.wpgraphql.posts.edges) &&
+    postResults.data.wpgraphql.posts.edges.forEach(({ node }) => {
+      createPage({
+        path: node.slug,
+        component: path.resolve(`./src/templates/blog-template.js`),
+        context: {
+          // This is the $slug variable
+          // passed to blog-post.js
+          slug: node.slug,
+          databaseId: node.databaseId,
+        },
+      })
     })
-  })
 
   /**
    * Create Pages
@@ -70,18 +71,19 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  pageResults.data.wpgraphql.pages.edges.forEach(({ node }) => {
-    createPage({
-      path: node.slug,
-      component: path.resolve(`./src/templates/page-template.js`),
-      context: {
-        // This is the $slug variable
-        // passed to blog-post.js
-        slug: node.slug,
-        databaseId: node.databaseId,
-      },
+  Array.isArray(pageResults.data.wpgraphql.pages.edges) &&
+    pageResults.data.wpgraphql.pages.edges.forEach(({ node }) => {
+      createPage({
+        path: node.slug,
+        component: path.resolve(`./src/templates/page-template.js`),
+        context: {
+          // This is the $slug variable
+          // passed to blog-post.js
+          slug: node.slug,
+          databaseId: node.databaseId,
+        },
+      })
     })
-  })
 
   /**
    * Create Category Pages
@@ -102,19 +104,20 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  categoryPageResults.data.wpgraphql.categories.edges.forEach(({ node }) => {
-    createPage({
-      path: `/category/${node.slug}`,
-      component: path.resolve(`./src/templates/category-page-template.js`),
-      context: {
-        // This is the $slug variable
-        // passed to blog-post.js
-        slug: node.slug,
-        databaseId: node.databaseId,
-        name: node.name,
-      },
+  Array.isArray(categoryPageResults.data.wpgraphql.categories.edges) &&
+    categoryPageResults.data.wpgraphql.categories.edges.forEach(({ node }) => {
+      createPage({
+        path: `/category/${node.slug}`,
+        component: path.resolve(`./src/templates/category-page-template.js`),
+        context: {
+          // This is the $slug variable
+          // passed to blog-post.js
+          slug: node.slug,
+          databaseId: node.databaseId,
+          name: node.name,
+        },
+      })
     })
-  })
 
   /**
    * Create Tags Pages
@@ -135,17 +138,18 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  tagPageResults.data.wpgraphql.tags.edges.forEach(({ node }) => {
-    createPage({
-      path: `/tag/${node.slug}`,
-      component: path.resolve(`./src/templates/tag-page-template.js`),
-      context: {
-        // This is the $slug variable
-        // passed to blog-post.js
-        slug: node.slug,
-        databaseId: node.databaseId,
-        name: node.name,
-      },
+  Array.isArray(tagPageResults.data.wpgraphql.tags.edges) &&
+    tagPageResults.data.wpgraphql.tags.edges.forEach(({ node }) => {
+      createPage({
+        path: `/tag/${node.slug}`,
+        component: path.resolve(`./src/templates/tag-page-template.js`),
+        context: {
+          // This is the $slug variable
+          // passed to blog-post.js
+          slug: node.slug,
+          databaseId: node.databaseId,
+          name: node.name,
+        },
+      })
     })
-  })
 }
