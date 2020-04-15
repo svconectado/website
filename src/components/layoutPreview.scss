@@ -126,6 +126,11 @@
 
   summary {
     display: list-item;
+    @apply cursor-pointer;
+  }
+
+  iframe[src*="http"] {
+    @apply border border-gray rounded;
   }
 
   blockquote {
