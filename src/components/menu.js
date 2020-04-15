@@ -72,17 +72,17 @@ export default () => (
         <ul>
           {data.wpgraphql.menuItems.edges.map(({ node }) => (
             <li key={node.id}>
-              {"#" !== node.url ? (
+              {node.url !== "#" ? (
                 <Link to={`/${node.connectedObject.slug}`}>{node.label}</Link>
               ) : (
                 <div>{node.label}</div>
               )}
               {node.childItems.edges.length > 0 && (
                 <ul className="sub-nav">
-                  {node.childItems.edges.map(({ node }) => (
-                    <li key={node.id}>
-                      <Link to={`/${node.connectedObject.slug}`}>
-                        {node.label}
+                  {node.childItems.edges.map(({ node_ }) => (
+                    <li key={node_.id}>
+                      <Link to={`/${node_.connectedObject.slug}`}>
+                        {node_.label}
                       </Link>
                     </li>
                   ))}

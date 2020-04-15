@@ -162,7 +162,7 @@ const Header = () => (
         </StyledWrapper>
       )
     }}
-  ></StaticQuery>
+  />
 )
 
 export default Header
