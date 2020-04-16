@@ -6,11 +6,11 @@ import Footer from "./footer"
 import "./layout.css"
 import "./layoutPreview.scss"
 
-const Layout = ({ children }) => (
+const Layout = ({ children, data, headerVh }) => (
   <ThemeContext.Consumer>
     {(theme) => (
       <div className={`body ${theme.dark ? "dark" : "light"}`}>
-        <Header />
+        <Header data={data} headerVh={headerVh} />
         <div>
           {children}
         </div>
@@ -19,6 +19,7 @@ const Layout = ({ children }) => (
     )}
   </ThemeContext.Consumer>
 )
+
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired
