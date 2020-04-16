@@ -51,6 +51,17 @@ module.exports = {
           failOnError: false
         }
       }
+    },
+    {
+      resolve: "gatsby-plugin-sass",
+      options: {
+        /* eslint-disable */
+        postCssPlugins: [
+          require("tailwindcss"),
+          require("./tailwind.config.js")
+        ]
+        /* eslint-enable */
+      }
     }
   ]
 }
