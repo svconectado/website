@@ -165,7 +165,7 @@ const StyledWrapper = styled.div`
   }
 
 @media (min-width: ${CustomTheme.extend.screens.tablet}) {
-  .hero__container__text__button__href {
+  .header__hero__container__text__button__href {
     ${tw`text-3xl`}
   }
 
