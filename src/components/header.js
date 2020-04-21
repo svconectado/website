@@ -80,6 +80,14 @@ const Header = ({ data = {}, headerVh = 100 }) => {
                   </div>
                 )}
               </div>
+              <a
+                className="header__hero__container__credit"
+                href={_.get(backgroundImage, "sourceUrl", "")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                { _.get(backgroundImage, "authorName", "") }
+              </a>
             </div>
           )}
         </ThemeContext.Consumer>
@@ -149,7 +157,7 @@ const StyledWrapper = styled.div`
               content: '';
               ${tw`absolute inset-0 h-full w-1/12`}
               background-color: #8ca2ec;
-              opacity: 0.50;
+              opacity: 0.3;
               transition: width 1s ease-out;
             }
 
@@ -160,6 +168,14 @@ const StyledWrapper = styled.div`
             }
           }
         }
+      }
+
+      &__credit {
+        ${tw`underline text-xs bottom-0 right-0`}
+        ${tw`absolute mr-4`}
+        min-width: auto;
+        min-height: auto;
+        opacity: 0.3;
       }
     }
   }

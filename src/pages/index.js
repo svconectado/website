@@ -67,7 +67,16 @@ const IndexPage = ({ data }) => {
                 <h1 className="aboutus__text__title">
                   { _.get(sectionAboutUs, "title", "") }
                 </h1>
-                <div className="aboutus__text__img" />
+                <div className="aboutus__text__img">
+                  <a
+                    className="aboutus__text__img__credit"
+                    href={_.get(sectionAboutUs, "image.sourceUrl", "")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    { _.get(sectionAboutUs, "image.authorName", "") }
+                  </a>
+                </div>
                 <span className="aboutus__text__first-description">
                   { _.get(sectionAboutUs, "firstDescription", "") }
                 </span>
@@ -82,11 +91,21 @@ const IndexPage = ({ data }) => {
                 </Link>
               </div>
               <div className="aboutus__media">
-                <img
-                  src={_.get(sectionAboutUs, "image.wpUrl", "")}
-                  alt={_.get(sectionAboutUs, "image.alt", "")}
-                  className="aboutus__media__img"
-                />
+                <div className="aboutus__media__container">
+                  <img
+                    src={_.get(sectionAboutUs, "image.wpUrl", "")}
+                    alt={_.get(sectionAboutUs, "image.alt", "")}
+                    className="aboutus__media__container__img"
+                  />
+                  <a
+                    className="aboutus__media__container__img__credit"
+                    href={_.get(sectionAboutUs, "image.sourceUrl", "")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    { _.get(sectionAboutUs, "image.authorName", "") }
+                  </a>
+                </div>
               </div>
             </div>
           </StyleSectionAboutUs>
@@ -232,9 +251,18 @@ const StyleSectionAboutUs = styled.div`
       }
 
       &__img {
+        ${tw`flex items-end justify-end`}
+        ${tw`text-xs text-white`}
         ${tw`rounded my-4 h-48`}
         ${tw`bg-local bg-center bg-no-repeat bg-cover`}
         background-image: url(${(props) => props.image.wpUrl});
+
+        &__credit {
+          ${tw`underline mr-4`}
+          min-width: auto;
+          min-height: auto;
+          opacity: 0.3;
+        }
       }
 
       &__first-description {
@@ -284,7 +312,23 @@ const StyleSectionAboutUs = styled.div`
     }
 
     &__media {
-      ${tw`flex justify-center items-center w-5/12`}
+      ${tw`flex justify-center items-center w-5/12 text-white`}
+
+      &__container {
+        ${tw`relative`}
+
+        &__img {
+          ${tw`mb-0`}
+        }
+
+        &__img__credit {
+          ${tw`underline text-xs`}
+          ${tw`absolute mr-4 bottom-0 right-0`}
+          min-width: auto;
+          min-height: auto;
+          opacity: 0.3;
+        }
+      }
     }
   }
 }
