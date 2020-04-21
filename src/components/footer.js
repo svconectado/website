@@ -99,38 +99,38 @@ const StyledFooter = styled.div`
     }
   }
 
-@media (min-width: ${CustomTheme.extend.screens.laptop}) {
-  .footer__container {
-    ${tw`flex-row py-10`}
+  @media (min-width: ${CustomTheme.extend.screens.laptop}) {
+    .footer__container {
+      ${tw`flex-row py-10`}
 
-    &__logo {
-      ${tw`w-1/2`}
+      &__logo {
+        ${tw`w-1/2`}
 
-      &__img {
-        ${tw`mb-0`}
-      }
-    }
-
-    &__text {
-      ${tw`w-1/2`}
-
-      &__menu {
-        ${tw`flex-row justify-end`}
-
-        &__element {
-          ${tw`ml-4`}
+        &__img {
+          ${tw`mb-0`}
         }
       }
 
-      &__social {
-        ${tw`flex-row justify-end`}
+      &__text {
+        ${tw`w-1/2`}
 
-        &__element {
-          ${tw`text-right text-2xl`}
+        &__menu {
+          ${tw`flex-row justify-end`}
+
+          &__element {
+            ${tw`ml-4`}
+          }
+        }
+
+        &__social {
+          ${tw`flex-row justify-end`}
+
+          &__element {
+            ${tw`text-right text-2xl`}
+          }
         }
       }
     }
   }
-}
 `
 export default Footer

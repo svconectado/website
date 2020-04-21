@@ -1,8 +1,10 @@
-require('dotenv').config()
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: "El Salvador Conectado",
-    description: "Sitio web hecho en Gatsby con GraphQL. Para el contenido se usa WordPress https://elsalvadorconectado.org",
+    description:
+      "Sitio web hecho en Gatsby con GraphQL. Para el contenido se usa WordPress https://elsalvadorconectado.org",
     author: "@elsalvadorconectado"
   },
   plugins: [
@@ -25,7 +27,7 @@ module.exports = {
         fieldName: "wpgraphql",
         // Url to query from
         url: `${process.env.WP_API_URL ||
-          "https://svc-staging-wordpress.de.quenecesito.org/graphql"}`,
+          "https://svc-staging-wordpress.de.quenecesito.org/graphql"}`
       }
     },
     {

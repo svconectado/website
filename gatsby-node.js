@@ -30,8 +30,8 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  Array.isArray(postResults.data.wpgraphql.posts.edges)
-    && postResults.data.wpgraphql.posts.edges.forEach(({ node }) => {
+  Array.isArray(postResults.data.wpgraphql.posts.edges) &&
+    postResults.data.wpgraphql.posts.edges.forEach(({ node }) => {
       createPage({
         path: node.slug,
         component: path.resolve("./src/templates/blog-page-template.js"),
@@ -71,8 +71,8 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  Array.isArray(pageResults.data.wpgraphql.pages.edges)
-    && pageResults.data.wpgraphql.pages.edges.forEach(({ node }) => {
+  Array.isArray(pageResults.data.wpgraphql.pages.edges) &&
+    pageResults.data.wpgraphql.pages.edges.forEach(({ node }) => {
       createPage({
         path: node.slug,
         component: path.resolve("./src/templates/blog-page-template.js"),
@@ -104,11 +104,13 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  Array.isArray(categoryPageResults.data.wpgraphql.categories.edges)
-    && categoryPageResults.data.wpgraphql.categories.edges.forEach(({ node }) => {
+  Array.isArray(categoryPageResults.data.wpgraphql.categories.edges) &&
+    categoryPageResults.data.wpgraphql.categories.edges.forEach(({ node }) => {
       createPage({
         path: `/category/${node.slug}`,
-        component: path.resolve("./src/templates/category-posts-list-template.js"),
+        component: path.resolve(
+          "./src/templates/category-posts-list-template.js"
+        ),
         context: {
           // This is the $slug variable
           // passed to blog-post.js
@@ -139,8 +141,8 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  Array.isArray(tagPageResults.data.wpgraphql.tags.edges)
-    && tagPageResults.data.wpgraphql.tags.edges.forEach(({ node }) => {
+  Array.isArray(tagPageResults.data.wpgraphql.tags.edges) &&
+    tagPageResults.data.wpgraphql.tags.edges.forEach(({ node }) => {
       createPage({
         path: `/tag/${node.slug}`,
         component: path.resolve("./src/templates/tag-posts-list-template.js"),

@@ -11,15 +11,12 @@ const Layout = ({ children, data, headerVh }) => (
     {(theme) => (
       <div className={`body ${theme.dark ? "dark" : "light"}`}>
         <Header data={data} headerVh={headerVh} />
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
         <Footer />
       </div>
     )}
   </ThemeContext.Consumer>
 )
-
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired

@@ -13,7 +13,11 @@ const blueTransparentColor = "rgba(23, 72, 237, 0.85)"
 const Header = ({ data = {}, headerVh = 100 }) => {
   const height = headerVh
   const page = _.get(data, "wpgraphql.page", {})
-  const header = _.get(data, "wpgraphql.page.customFields.bodySectionHeader", {})
+  const header = _.get(
+    data,
+    "wpgraphql.page.customFields.bodySectionHeader",
+    {}
+  )
   const firstSlogan = _.get(header, "firstSlogan", "")
   const secondSlogan = _.get(header, "secondSlogan", "")
   const joinButton = _.get(header, "joinButton", { tex: "", href: "" })
@@ -37,7 +41,11 @@ const Header = ({ data = {}, headerVh = 100 }) => {
         <ThemeContext.Consumer>
           {(theme) => (
             <div className="header__hero__container container">
-              <button type="button" className="dark-switcher" onClick={theme.toggleDark}>
+              <button
+                type="button"
+                className="dark-switcher"
+                onClick={theme.toggleDark}
+              >
                 {theme.dark ? <span>☀</span> : <span>☾</span>}
               </button>
               <div className="header__hero__container__text">
@@ -51,12 +59,8 @@ const Header = ({ data = {}, headerVh = 100 }) => {
                 {/* <Menu /> */}
                 {!page && (
                   <div className="header__hero__container__text__error">
-                    <span>
-                      {errorMessageTitle}
-                    </span>
-                    <pre>
-                      { errorMessageBody }
-                    </pre>
+                    <span>{errorMessageTitle}</span>
+                    <pre>{errorMessageBody}</pre>
                   </div>
                 )}
                 {page && (
@@ -75,7 +79,7 @@ const Header = ({ data = {}, headerVh = 100 }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      { joinButton.text }
+                      {joinButton.text}
                     </a>
                   </div>
                 )}
@@ -86,7 +90,7 @@ const Header = ({ data = {}, headerVh = 100 }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                { _.get(backgroundImage, "authorName", "") }
+                {_.get(backgroundImage, "authorName", "")}
               </a>
             </div>
           )}

@@ -10,9 +10,21 @@ import SEO from "../components/seo"
 
 const IndexPage = ({ data }) => {
   const page = _.get(data, "wpgraphql.page", {})
-  const sectionMotivations = _.get(data, "wpgraphql.page.customFields.bodySectionMotivations", {})
-  const sectionAboutUs = _.get(data, "wpgraphql.page.customFields.bodySectionAboutUs", {})
-  const sectionInitiatives = _.get(data, "wpgraphql.page.customFields.bodySectionInitiatives", {})
+  const sectionMotivations = _.get(
+    data,
+    "wpgraphql.page.customFields.bodySectionMotivations",
+    {}
+  )
+  const sectionAboutUs = _.get(
+    data,
+    "wpgraphql.page.customFields.bodySectionAboutUs",
+    {}
+  )
+  const sectionInitiatives = _.get(
+    data,
+    "wpgraphql.page.customFields.bodySectionInitiatives",
+    {}
+  )
   const notFoundPageMessageError = "No existe la página solicitada"
   return (
     // headerVh = vh units of the Viewport
@@ -21,24 +33,25 @@ const IndexPage = ({ data }) => {
       <div className="container">
         {!page && (
           <StyleError>
-            <span>{ notFoundPageMessageError }</span>
+            <span>{notFoundPageMessageError}</span>
           </StyleError>
         )}
         {page && (
           <StyleSectionMotivations className="motivations-wrapper">
             <div className="motivations">
               <h1 className="motivations__title">
-                { _.get(sectionMotivations, "title", "") }
+                {_.get(sectionMotivations, "title", "")}
               </h1>
               <span className="motivations__first-description">
-                { _.get(sectionMotivations, "firstDescription", "") }
+                {_.get(sectionMotivations, "firstDescription", "")}
               </span>
               <span className="motivations__second-description">
-                { _.get(sectionMotivations, "secondDescription", "") }
+                {_.get(sectionMotivations, "secondDescription", "")}
               </span>
               <div className="motivations__list">
-                {
-                  _.map(_.get(sectionMotivations, "motivationsList", []), (m) => (
+                {_.map(
+                  _.get(sectionMotivations, "motivationsList", []),
+                  (m) => (
                     <div key={m.text} className="motivations__list__item">
                       <div className="motivations__list__item__icon">
                         <img
@@ -48,11 +61,11 @@ const IndexPage = ({ data }) => {
                         />
                       </div>
                       <span className="motivations__list__item__text">
-                        { m.text }
+                        {m.text}
                       </span>
                     </div>
-                  ))
-                }
+                  )
+                )}
               </div>
             </div>
           </StyleSectionMotivations>
@@ -65,7 +78,7 @@ const IndexPage = ({ data }) => {
             <div className="aboutus">
               <div className="aboutus__text">
                 <h1 className="aboutus__text__title">
-                  { _.get(sectionAboutUs, "title", "") }
+                  {_.get(sectionAboutUs, "title", "")}
                 </h1>
                 <div className="aboutus__text__img">
                   <a
@@ -74,20 +87,20 @@ const IndexPage = ({ data }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    { _.get(sectionAboutUs, "image.authorName", "") }
+                    {_.get(sectionAboutUs, "image.authorName", "")}
                   </a>
                 </div>
                 <span className="aboutus__text__first-description">
-                  { _.get(sectionAboutUs, "firstDescription", "") }
+                  {_.get(sectionAboutUs, "firstDescription", "")}
                 </span>
                 <span className="aboutus__text__second-description">
-                  { _.get(sectionAboutUs, "secondDescription", "") }
+                  {_.get(sectionAboutUs, "secondDescription", "")}
                 </span>
                 <Link
                   to={_.get(sectionAboutUs, "moreButton.href", "")}
                   className="aboutus__text__more-button"
                 >
-                  { _.get(sectionAboutUs, "moreButton.text", "") }
+                  {_.get(sectionAboutUs, "moreButton.text", "")}
                 </Link>
               </div>
               <div className="aboutus__media">
@@ -103,7 +116,7 @@ const IndexPage = ({ data }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    { _.get(sectionAboutUs, "image.authorName", "") }
+                    {_.get(sectionAboutUs, "image.authorName", "")}
                   </a>
                 </div>
               </div>
@@ -114,19 +127,19 @@ const IndexPage = ({ data }) => {
           <StyleSectionInitiatives className="initiatives-wrapper">
             <div className="initiatives">
               <h1 className="initiatives__title">
-                { _.get(sectionInitiatives, "title", "") }
+                {_.get(sectionInitiatives, "title", "")}
               </h1>
               <span className="initiatives__first-description">
-                { _.get(sectionInitiatives, "firstDescription", "") }
+                {_.get(sectionInitiatives, "firstDescription", "")}
               </span>
               <span className="initiatives__second-description">
-                { _.get(sectionInitiatives, "secondDescription", "") }
+                {_.get(sectionInitiatives, "secondDescription", "")}
               </span>
               <Link
                 to={_.get(sectionInitiatives, "moreButton.href", "")}
                 className="initiatives__more-button"
               >
-                { _.get(sectionInitiatives, "moreButton.text", "") }
+                {_.get(sectionInitiatives, "moreButton.text", "")}
               </Link>
             </div>
           </StyleSectionInitiatives>
@@ -181,52 +194,52 @@ const StyleSectionMotivations = styled.div`
     }
   }
 
-@media (min-width: ${CustomTheme.extend.screens.tablet}) {
-  .motivations {
-    ${tw`pb-12`}
+  @media (min-width: ${CustomTheme.extend.screens.tablet}) {
+    .motivations {
+      ${tw`pb-12`}
 
-    &__list {
-      ${tw`flex-row`}
+      &__list {
+        ${tw`flex-row`}
 
-      &__item {
-        ${tw`w-full`}
+        &__item {
+          ${tw`w-full`}
 
-        &__icon {
-          ${tw`h-20 w-20`}
-        }
+          &__icon {
+            ${tw`h-20 w-20`}
+          }
 
-        &__text {
-          ${tw`text-sm`}
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: ${CustomTheme.extend.screens.laptop}) {
-  .motivations {
-    ${tw`pb-16`}
-
-    &__list {
-      &__item {
-        ${tw`px-4`}
-        &__text {
-          ${tw`text-base`}
+          &__text {
+            ${tw`text-sm`}
+          }
         }
       }
     }
   }
-}
 
-@media (min-width: ${CustomTheme.extend.screens.desktop}) {
-  .motivations {
-    &__list {
-      &__item {
-        ${tw`px-8`}
+  @media (min-width: ${CustomTheme.extend.screens.laptop}) {
+    .motivations {
+      ${tw`pb-16`}
+
+      &__list {
+        &__item {
+          ${tw`px-4`}
+          &__text {
+            ${tw`text-base`}
+          }
+        }
       }
     }
   }
-}
+
+  @media (min-width: ${CustomTheme.extend.screens.desktop}) {
+    .motivations {
+      &__list {
+        &__item {
+          ${tw`px-8`}
+        }
+      }
+    }
+  }
 `
 const StyleSectionAboutUs = styled.div`
   .aboutus {
@@ -357,11 +370,11 @@ const StyleSectionInitiatives = styled.div`
     }
   }
 
-@media (min-width: ${CustomTheme.extend.screens.laptop}) {
-  .initiatives {
-    ${tw`text-left`}
+  @media (min-width: ${CustomTheme.extend.screens.laptop}) {
+    .initiatives {
+      ${tw`text-left`}
+    }
   }
-}
 `
 
 export default IndexPage
