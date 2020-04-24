@@ -34,7 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
     postResults.data.wpgraphql.posts.edges.forEach(({ node }) => {
       createPage({
         path: node.slug,
-        component: path.resolve("./src/templates/blog-page-template.js"),
+        component: path.resolve("./src/templates/blog-template.js"),
         context: {
           // This is the $slug variable
           // passed to blog-post.js
@@ -75,7 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
     pageResults.data.wpgraphql.pages.edges.forEach(({ node }) => {
       createPage({
         path: node.slug,
-        component: path.resolve("./src/templates/blog-page-template.js"),
+        component: path.resolve("./src/templates/page-template.js"),
         context: {
           // This is the $slug variable
           // passed to blog-post.js
