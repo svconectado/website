@@ -631,8 +631,6 @@ nav a {
 
 a {
   display: inline-block;
-  min-width: 50px;
-  min-height: 50px;
 }
 
 nav {
@@ -645,29 +643,6 @@ nav ul {
   list-style: none;
   margin: 0;
 }
-
-nav li {
-  margin: 5px;
-  position: relative;
-}
-
-nav ul.sub-nav {
-  background-color: rebeccapurple;
-  border: 1px solid #fff;
-  display: none;
-  position: absolute;
-}
-
-nav a:hover + ul.sub-nav,
-nav a + ul.sub-nav:hover {
-  display: block;
-}
-
-nav ul.sub-nav li {
-  margin: 5px;
-}
-
-
 
 /* Dark mode styles */
 .dark-switcher {

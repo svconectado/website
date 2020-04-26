@@ -8,7 +8,8 @@ module.exports = {
         separator: "#D6DFE0"
       },
       backgroundColor: (theme) => ({
-        gray: theme("colors.gray")
+        gray: theme("colors.gray"),
+        baseBlue: theme("colors.blue")
       }),
       textColor: (theme) => ({
         gray: theme("colors.graytext"),
@@ -26,7 +27,8 @@ module.exports = {
         "10xl": "8rem"
       },
       borderColor: (theme) => ({
-        separator: theme("colors.separator")
+        separator: theme("colors.separator"),
+        blue: theme("colors.blue")
       }),
       // https://tailwindcss.com/docs/breakpoints
       // https://tailwindcss.com/docs/container

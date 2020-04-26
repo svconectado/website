@@ -28,7 +28,7 @@ const IndexPage = ({ data }) => {
   const notFoundPageMessageError = "No existe la página solicitada"
   return (
     // headerVh = vh units of the Viewport
-    <Layout data={data} headerVh={100}>
+    <Layout data={data} showHeader inspectScroll>
       <SEO title="Home" description="" />
       <div className="container">
         {!page && (
