@@ -87,17 +87,33 @@ class Menu extends React.Component {
                     onClick={this.handleSubMenu}
                     className="menu__mobile__list__item__container"
                   >
+                    {/* eslint-disable-next-line */}
                     {node.url !== "#" ? (
-                      <Link
-                        to={`/${node.connectedObject.slug}`}
-                        className="menu__mobile__list__item__href"
-                      >
-                        {node.label}
-                      </Link>
+                      node.connectedObject.slug || node.url === "/" ? (
+                        <Link
+                          to={
+                            node.url === "/"
+                              ? "/"
+                              : `/${node.connectedObject.slug}`
+                          }
+                          className="menu__mobile__list__item__href"
+                        >
+                          {node.label}
+                        </Link>
+                      ) : (
+                        <a
+                          href={node.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="menu__mobile__list__item__href"
+                        >
+                          {node.label}
+                        </a>
+                      )
                     ) : (
-                      <div className="menu__mobile__list__item__text">
+                      <span className="menu__mobile__list__item__text">
                         {node.label}
-                      </div>
+                      </span>
                     )}
                     {_.get(node, "childItems.edges") && (
                       <ul className="menu__mobile__list__item__sub-menu">
@@ -113,15 +129,38 @@ class Menu extends React.Component {
                         </li>
                         {_.map(node.childItems.edges, ({ node: node_ }) => (
                           <li
-                            key={node_.connectedObject.slug}
+                            key={node_.url}
                             className="menu__mobile__list__item__sub-menu__item"
                           >
-                            <Link
-                              to={`/${node_.connectedObject.slug}`}
-                              className="menu__mobile__list__item__sub-menu__item__href"
-                            >
-                              {node_.label}
-                            </Link>
+                            {/* eslint-disable-next-line */}
+                            {node_.url !== "#" ? (
+                              node_.connectedObject.slug ||
+                              node_.url === "/" ? (
+                                <Link
+                                  to={
+                                    node_.url === "/"
+                                      ? "/"
+                                      : `/${node_.connectedObject.slug}`
+                                  }
+                                  className="menu__mobile__list__item__sub-menu__item__href"
+                                >
+                                  {node_.label}
+                                </Link>
+                              ) : (
+                                <a
+                                  href={node_.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="menu__mobile__list__item__sub-menu__item__href"
+                                >
+                                  {node_.label}
+                                </a>
+                              )
+                            ) : (
+                              <span className="menu__mobile__list__item__sub-menu__item">
+                                {node_.label}
+                              </span>
+                            )}
                           </li>
                         ))}
                       </ul>
@@ -156,29 +195,67 @@ class Menu extends React.Component {
                     "childItems.edges"
                   ) && "--has-items"}`}
                 >
+                  {/* eslint-disable-next-line */}
                   {node.url !== "#" ? (
-                    <Link
-                      to={`/${node.connectedObject.slug}`}
-                      className="menu__list__item__href"
-                    >
-                      {node.label}
-                    </Link>
+                    node.connectedObject.slug || node.url === "/" ? (
+                      <Link
+                        to={
+                          node.url === "/"
+                            ? "/"
+                            : `/${node.connectedObject.slug}`
+                        }
+                        className="menu__list__item__href"
+                      >
+                        {node.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={node.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="menu__list__item__href"
+                      >
+                        {node.label}
+                      </a>
+                    )
                   ) : (
-                    <div className="menu__list__item__text">{node.label}</div>
+                    <span className="menu__list__item__text">{node.label}</span>
                   )}
                   {_.get(node, "childItems.edges") && (
                     <ul className="menu__list__item__sub-menu__list">
                       {_.map(node.childItems.edges, ({ node: node_ }) => (
                         <li
-                          key={node_.connectedObject.slug}
+                          key={node_.url}
                           className="menu__list__item__sub-menu__list__item"
                         >
-                          <Link
-                            to={`/${node_.connectedObject.slug}`}
-                            className="menu__list__item__sub-menu__list__item__href"
-                          >
-                            {node_.label}
-                          </Link>
+                          {/* eslint-disable-next-line */}
+                          {node_.url !== "#" ? (
+                            node_.connectedObject.slug || node_.url === "/" ? (
+                              <Link
+                                to={
+                                  node_.url === "/"
+                                    ? "/"
+                                    : `/${node_.connectedObject.slug}`
+                                }
+                                className="menu__list__item__sub-menu__list__item__href"
+                              >
+                                {node_.label}
+                              </Link>
+                            ) : (
+                              <a
+                                href={node_.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="menu__list__item__sub-menu__list__item__href"
+                              >
+                                {node_.label}
+                              </a>
+                            )
+                          ) : (
+                            <span className="menu__list__item__sub-menu__list__item">
+                              {node_.label}
+                            </span>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -254,8 +331,12 @@ const StyledWrapper = styled.div`
           ${tw`text-left`}
         }
 
-        &__href {
+        &__href, &__text {
           ${tw`py-4`}
+        }
+
+        &__text {
+          ${tw`inline-block`}
         }
 
         &__sub-menu {
@@ -282,8 +363,12 @@ const StyledWrapper = styled.div`
               ${tw`justify-end border-b-0`}
             }
 
-            &__href {
+            &__href, &__text {
               ${tw`w-full py-4`}
+            }
+
+            &__text {
+              ${tw`inline-block`}
             }
           }
         }
@@ -312,7 +397,8 @@ const StyledWrapper = styled.div`
         ${tw`text-xs`}
 
         &__item {
-         ${tw`flex justify-end items-center relative mb-0 mr-4`}
+         ${tw`flex justify-end items-center relative mb-0 ml-4`}
+         ${tw`cursor-pointer`}
 
           &.--has-items::after {
             content: "\f107";
@@ -367,7 +453,7 @@ export default ({ inspectScroll }) => (
     query={graphql`
       query MenuQuery {
         wpgraphql {
-          menuItems(where: { location: MENU_1 }) {
+          menuItems(where: { location: PRIMARY }) {
             edges {
               node {
                 label

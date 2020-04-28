@@ -34,7 +34,7 @@ const LayoutWrapper = styled.div`
     ${tw`pt-12`}
 
     &__title {
-      ${tw`font-semibold mb-8`}
+      ${tw`font-semibold mt-6 mb-8`}
     }
   }
 `
