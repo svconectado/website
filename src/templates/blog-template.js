@@ -8,6 +8,7 @@ import _ from "lodash"
 import { theme as CustomTheme } from "../../tailwind.config"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BannerSEO from "../images/banner_seo.png"
 
 const BlogPageTemplate = ({ data }) => {
   const {
@@ -19,9 +20,14 @@ const BlogPageTemplate = ({ data }) => {
     "author.lastname",
     ""
   )}`
+  const imageSEO = _.get(post, "featuredImage.mediaItemUrl", BannerSEO)
   return (
     <Layout>
-      <SEO title={post.title} description={post.excerpt} />
+      <SEO
+        title={post.title}
+        description={post.excerpt.replace(/<\/?[^>]+(>|$)/g, "")}
+        image={imageSEO}
+      />
       <LayoutWrapper className="container html-format">
         <div className="publication">
           {post.featuredImage && (
@@ -71,6 +77,8 @@ const BlogPageTemplate = ({ data }) => {
 
 const LayoutWrapper = styled.div`
   .publication {
+    ${tw`pt-12`}
+
     &__cover {
       ${tw`rounded-t`}
       ${tw`bg-local bg-center bg-no-repeat bg-cover`}

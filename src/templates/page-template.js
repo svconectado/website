@@ -2,17 +2,24 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import tw from "twin.macro"
+import _ from "lodash"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BannerSEO from "../images/banner_seo.png"
 
 const BlogPageTemplate = ({ data }) => {
   const {
     wpgraphql: { post }
   } = data
+  const imageSEO = _.get(post, "featuredImage.mediaItemUrl", BannerSEO)
   return (
     <Layout>
-      <SEO title={post.title} description={post.excerpt} />
+      <SEO
+        title={post.title}
+        description={post.excerpt.replace(/<\/?[^>]+(>|$)/g, "")}
+        image={imageSEO}
+      />
       <LayoutWrapper className="container html-format">
         <div className="publication">
           <h1

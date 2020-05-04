@@ -4,8 +4,8 @@ module.exports = {
   siteMetadata: {
     title: "El Salvador Conectado",
     description:
-      "Sitio web hecho en Gatsby con GraphQL. Para el contenido se usa WordPress https://elsalvadorconectado.org",
-    author: "@elsalvadorconectado"
+      "Grupo multidisciplinario de profesionales organizados en una comunidad. Buscamos apoyar y resolver por medio de tecnologías colaborativas y open source.",
+    author: "@SVconectado"
   },
   plugins: [
     "gatsby-plugin-react-helmet",
