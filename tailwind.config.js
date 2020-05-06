@@ -4,13 +4,15 @@ module.exports = {
       colors: {
         gray: "#E9E9E9",
         graytext: "#555555",
+        blue: "#1748ED",
         separator: "#D6DFE0"
       },
       backgroundColor: (theme) => ({
         gray: theme("colors.gray")
       }),
       textColor: (theme) => ({
-        gray: theme("colors.graytext")
+        gray: theme("colors.graytext"),
+        blue: theme("colors.blue")
       }),
       fontFamily: {
         montserrat: "Montserrat, sans-serif",

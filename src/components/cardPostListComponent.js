@@ -9,9 +9,7 @@ import { theme as CustomTheme } from "../../tailwind.config"
 const PostCardList = ({ post }) => {
   const data = useStaticQuery(graphql`
     query {
-      desktop: file(
-        relativePath: { eq: "elsalvadorconectado-cover.png" }
-      ) {
+      desktop: file(relativePath: { eq: "elsalvadorconectado-cover.png" }) {
         childImageSharp {
           fluid(quality: 90, maxWidth: 1920) {
             ...GatsbyImageSharpFluid_withWebp
@@ -22,9 +20,15 @@ const PostCardList = ({ post }) => {
   `)
 
   const coverDefault = data.desktop.childImageSharp.fluid.src
-  const cover = post.featuredImage ? post.featuredImage.mediaItemUrl : coverDefault
+  const cover = post.featuredImage
+    ? post.featuredImage.mediaItemUrl
+    : coverDefault
   const date = moment(post.date).format("DD MMM YYYY")
-  const author = `${_.get(post, "author.name", "")} ${_.get(post, "author.lastname", "")}`
+  const author = `${_.get(post, "author.name", "")} ${_.get(
+    post,
+    "author.lastname",
+    ""
+  )}`
 
   return (
     <StyledPostCardList>
@@ -37,18 +41,14 @@ const PostCardList = ({ post }) => {
           />
           <div className="card__details">
             <Link to={`/${post.slug}`} className="card__details__title">
-              { post.title }
+              {post.title}
             </Link>
             <Link to={`/${post.slug}`} className="card__details__more">
-              <span className="card__details__author">
-                { author }
-              </span>
+              <span className="card__details__author">{author}</span>
               <span>
                 <span>&nbsp;&#183;&nbsp;</span>
               </span>
-              <span className="card__details__date">
-                { date }
-              </span>
+              <span className="card__details__date">{date}</span>
             </Link>
             {post.tags.edges && (
               <div className="card__details__tags">
@@ -58,10 +58,7 @@ const PostCardList = ({ post }) => {
                     className="card__details__tags__element"
                     key={tag.node.id}
                   >
-                    <span>
-                      #
-                      {tag.node.name}
-                    </span>
+                    <span>#{tag.node.name}</span>
                   </Link>
                 ))}
               </div>

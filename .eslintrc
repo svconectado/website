@@ -3,7 +3,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "airbnb"
+    "airbnb",
+    "plugin:prettier/recommended"
   ],
   "globals": {
     "window": true,
@@ -15,10 +16,12 @@
     "semi": ["error", "never"],
     "comma-dangle": ["error", "never"],
     "quotes": ["error", "double", { "avoidEscape": true }],
+    "no-unused-expressions": [2, { allowShortCircuit: true }], // gatsby-node.js
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/no-danger": 0,
     "react/prop-types": 0,
     "react/state-in-constructor": 0,
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "react/jsx-one-expression-per-line": 0
   }
 }

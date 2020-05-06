@@ -10,20 +10,25 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const BlogPageTemplate = ({ data }) => {
-  const { wpgraphql: { post } } = data
+  const {
+    wpgraphql: { post }
+  } = data
   const date = moment(post.date).format("DD MMM YYYY")
-  const author = `${_.get(post, "author.name", "")} ${_.get(post, "author.lastname", "")}`
+  const author = `${_.get(post, "author.name", "")} ${_.get(
+    post,
+    "author.lastname",
+    ""
+  )}`
   return (
     <Layout>
-      <SEO
-        title={post.title}
-        description={post.excerpt}
-      />
+      <SEO title={post.title} description={post.excerpt} />
       <LayoutWrapper className="container html-format">
         <div className="publication">
           {post.featuredImage && (
             <div
-              style={{ backgroundImage: `url(${post.featuredImage.mediaItemUrl})` }}
+              style={{
+                backgroundImage: `url(${post.featuredImage.mediaItemUrl})`
+              }}
               alt={post.title}
               className="publication__cover"
             />
@@ -34,15 +39,11 @@ const BlogPageTemplate = ({ data }) => {
           />
           <div className="publication__details">
             <div className="publication__details__more">
-              <span className="publication__details__author">
-                { author }
-              </span>
+              <span className="publication__details__author">{author}</span>
               <span>
                 <span>&nbsp;&#183;&nbsp;</span>
               </span>
-              <span className="publication__details__date">
-                { date }
-              </span>
+              <span className="publication__details__date">{date}</span>
             </div>
             {post.tags.edges && (
               <div className="publication__details__tags">
@@ -52,10 +53,7 @@ const BlogPageTemplate = ({ data }) => {
                     className="publication__details__tags__element"
                     key={tag.node.id}
                   >
-                    <span>
-                      #
-                      {tag.node.name}
-                    </span>
+                    <span>#{tag.node.name}</span>
                   </Link>
                 ))}
               </div>

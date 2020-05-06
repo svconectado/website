@@ -6,14 +6,12 @@ import Footer from "./footer"
 import "./layout.css"
 import "./layoutPreview.scss"
 
-const Layout = ({ children }) => (
+const Layout = ({ children, data, headerVh }) => (
   <ThemeContext.Consumer>
     {(theme) => (
       <div className={`body ${theme.dark ? "dark" : "light"}`}>
-        <Header />
-        <div>
-          {children}
-        </div>
+        <Header data={data} headerVh={headerVh} />
+        <div>{children}</div>
         <Footer />
       </div>
     )}
