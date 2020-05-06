@@ -10,7 +10,7 @@
   h6 {
     line-height: 1.5;
     @apply font-montserrat font-medium;
-    @apply mt-5 mb-4;
+    @apply mt-10 mb-4;
   }
 
   h1,
@@ -139,16 +139,20 @@
     @apply italic;
   }
 
-  [class*="center"] {
-    @apply text-center;
+  figure {
+    @apply flex flex-col justify-center items-start;
   }
 
-  [class*="left"] {
-    @apply text-left;
+  figure[class*="center"] {
+    @apply items-center;
   }
 
-  [class*="right"] {
-    @apply text-right;
+  figure[class*="left"] {
+    @apply items-start;
+  }
+
+  figure[class*="right"] {
+    @apply items-end;
   }
 
   img[class*="center"],

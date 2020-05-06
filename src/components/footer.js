@@ -87,13 +87,17 @@ const StyledFooter = styled.div`
       &__menu {
         ${tw`flex flex-col justify-center items-center my-4`}
         ${tw`font-medium`}
+
+        &__element {
+          ${tw`my-2`}
+        }
       }
 
       &__social {
         ${tw`flex justify-center items-center`}
 
         &__element {
-          ${tw`text-center text-3xl`}
+          ${tw`text-center text-3xl mx-4`}
         }
       }
     }
@@ -118,7 +122,7 @@ const StyledFooter = styled.div`
           ${tw`flex-row justify-end`}
 
           &__element {
-            ${tw`ml-4`}
+            ${tw`ml-4 my-0`}
           }
         }
 
@@ -126,7 +130,7 @@ const StyledFooter = styled.div`
           ${tw`flex-row justify-end`}
 
           &__element {
-            ${tw`text-right text-2xl`}
+            ${tw`text-right text-2xl ml-8 mr-0`}
           }
         }
       }

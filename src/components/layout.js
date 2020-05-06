@@ -1,16 +1,17 @@
 import React from "react"
-import PropTypes from "prop-types"
 import ThemeContext from "../context/ThemeContext"
+import Menu from "./menu"
 import Header from "./header"
 import Footer from "./footer"
 import "./layout.css"
 import "./layoutPreview.scss"
 
-const Layout = ({ children, data, headerVh }) => (
+const Layout = ({ children, data, headerVh, showHeader, inspectScroll }) => (
   <ThemeContext.Consumer>
     {(theme) => (
       <div className={`body ${theme.dark ? "dark" : "light"}`}>
-        <Header data={data} headerVh={headerVh} />
+        <Menu inspectScroll={inspectScroll} />
+        {showHeader && <Header data={data} headerVh={headerVh} />}
         <div>{children}</div>
         <Footer />
       </div>
@@ -18,8 +19,9 @@ const Layout = ({ children, data, headerVh }) => (
   </ThemeContext.Consumer>
 )
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired
+Layout.defaultProps = {
+  headerVh: 100,
+  showHeader: false
 }
 
 export default Layout

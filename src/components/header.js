@@ -10,7 +10,7 @@ import ElSalvadorConectadoLogo from "../images/elsalvadorconectado-logo.svg"
 
 const blueTransparentColor = "rgba(23, 72, 237, 0.85)"
 
-const Header = ({ data = {}, headerVh = 100 }) => {
+const Header = ({ data, headerVh }) => {
   const height = headerVh
   const page = _.get(data, "wpgraphql.page", {})
   const header = _.get(
@@ -39,15 +39,8 @@ const Header = ({ data = {}, headerVh = 100 }) => {
     >
       <div className="header__hero">
         <ThemeContext.Consumer>
-          {(theme) => (
+          {() => (
             <div className="header__hero__container container">
-              <button
-                type="button"
-                className="dark-switcher"
-                onClick={theme.toggleDark}
-              >
-                {theme.dark ? <span>☀</span> : <span>☾</span>}
-              </button>
               <div className="header__hero__container__text">
                 <Link className="header__hero__container__text__logo" to="/">
                   <img
@@ -232,5 +225,9 @@ const StyledWrapper = styled.div`
   }
 }
 `
+Header.defaultProps = {
+  data: {},
+  headerVh: 100
+}
 
 export default Header
